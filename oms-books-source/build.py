@@ -11,6 +11,7 @@ PHONE = '(415) 918-6468'
 PHONE_TEL = '+14159186468'
 VIDEO_MP4 = 'https://d8j0ntlcm91z4.cloudfront.net/user_34zVcIhIsOTW0q6TlxKlFv5n3Up/hf_20260922_190824_48a4aa6c-8635-4126-8d19-e55cad300211.mp4'
 VIDEO_POSTER = 'https://d2ol7oe51mr4n9.cloudfront.net/user_34zVcIhIsOTW0q6TlxKlFv5n3Up/8254257b-bc02-4a9b-bbb4-49ea7233635e_resize.jpg'
+ASSET_V = '4'   # bump this whenever the CSS or JS changes, so browsers fetch the new file
 CHLOE_IMG = 'https://d8j0ntlcm91z4.cloudfront.net/user_34zVcIhIsOTW0q6TlxKlFv5n3Up/hf_20260922_150503_2fa3aa24-2bce-4b39-ae2c-f88e059211f2_min.webp'
 
 # ---------------------------------------------------------------- books
@@ -112,7 +113,7 @@ def head(title, desc, path):
 <meta name="theme-color" content="#030712">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/anton.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css?v={ASSET_V}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -242,8 +243,8 @@ def chat():
     <button type="submit" aria-label="Send"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
   </form>
 </section>
-<script src="/assets/js/faq-data.js"></script>
-<script src="/assets/js/site.js"></script>
+<script src="/assets/js/faq-data.js?v={ASSET_V}"></script>
+<script src="/assets/js/site.js?v={ASSET_V}"></script>
 '''
 
 def page(path, title, desc, body, news=True):
@@ -637,7 +638,7 @@ def main():
         '/publications        /books/           301',
         '/publications/       /books/           301',
     ]) + '\n')
-    write('netlify.toml', '[build]\n  publish = "."\n\n[[headers]]\n  for = "/assets/*"\n  [headers.values]\n    Cache-Control = "public, max-age=604800"\n')
+    write('netlify.toml', '[build]\n  publish = "."\n\n[[headers]]\n  for = "/assets/fonts/*"\n  [headers.values]\n    Cache-Control = "public, max-age=604800"\n\n[[headers]]\n  for = "/assets/covers/*"\n  [headers.values]\n    Cache-Control = "public, max-age=604800"\n\n[[headers]]\n  for = "/assets/css/*"\n  [headers.values]\n    Cache-Control = "public, max-age=0, must-revalidate"\n\n[[headers]]\n  for = "/assets/js/*"\n  [headers.values]\n    Cache-Control = "public, max-age=0, must-revalidate"\n')
     write('robots.txt', 'User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n' % SITE)
     urls = ['/', '/books/', '/get-signed/', '/boutique/', '/page-to-screen/', '/about/', '/faq/', '/submit/'] + [f'/{s}/' for s in LEGAL]
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
