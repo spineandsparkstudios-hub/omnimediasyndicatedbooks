@@ -149,6 +149,26 @@ def bonus_band():
 </section>
 '''
 
+def video_bonus_hero():
+    return f"""<section class="vhero" aria-labelledby="bonus-h">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">For experienced authors</p>
+      <h2 class="display" id="bonus-h">Up to a six-figure<br><span class="blue-l">signing bonus</span></h2>
+      <p class="vhero-sub">For authors with multiple published books and a completed manuscript. Bonus eligibility, amount, and timing are set case by case.</p>
+      <div class="vhero-cta">
+        <a class="btn btn-blue" href="/submit/?path=bonus">See if you qualify {ARROW}</a>
+        <a class="btn btn-ghost" href="/get-signed/">Get signed free {ARROW}</a>
+      </div>
+    </div>
+    <figure class="hero-video" style="margin:0">
+      <video src="{VIDEO_MP4}" poster="{VIDEO_POSTER}" autoplay muted loop playsinline controls preload="metadata" width="340" height="604" aria-label="OMS Books 30-second introduction"></video>
+      <figcaption class="cap"><span>Why traditional publishing is dead</span><span>0:30</span></figcaption>
+    </figure>
+  </div>
+</section>
+"""
+
 def newsletter(heading='Be first to read.', text='Cover reveals, release dates, and preorder links for every new OMS book, straight to your inbox.'):
     return f'''<section class="news" id="newsletter" aria-labelledby="news-h">
   <div class="wrap">
@@ -252,15 +272,9 @@ def steps():
 # ---------------------------------------------------------------- pages
 def home():
     cards = '\n'.join(book_card(b) for b in BOOKS)
-    body = bonus_band() + f'''<section class="hero wrap" aria-labelledby="hero-h">
+    body = video_bonus_hero() + f'''<section class="hero wrap" aria-labelledby="hero-h">
   <div class="meta-row"><span>Vol. 01</span><span>Paperback &middot; eBook &middot; Audiobook</span><span>Est. 2026</span></div>
-  <div class="hero-top">
-    <h1 class="display" id="hero-h">Your book.<br><span class="blue">Published.</span></h1>
-    <figure class="hero-video" style="margin:0">
-      <video src="{VIDEO_MP4}" poster="{VIDEO_POSTER}" autoplay muted loop playsinline controls preload="metadata" width="300" height="533" aria-label="OMS Books 30-second introduction"></video>
-      <figcaption class="cap"><span>Why traditional publishing is dead</span><span>0:30</span></figcaption>
-    </figure>
-  </div>
+  <h1 class="display" id="hero-h">Your book.<br><span class="blue">Published.</span></h1>
   <div class="hero-grid">
     <p class="lede">OMS Books signs authors at no cost and publishes their work in paperback, ebook, and audiobook.</p>
     <p>Our top sellers can go further. Select titles are developed into vertical films and pitched for the screen.</p>

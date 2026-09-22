@@ -300,3 +300,19 @@ fieldset{border:0;padding:0;margin:0 0 22px}
   .hero-top .display{font-size:clamp(64px,15vw,180px)}
 }
 @media (max-width:600px){.hero-top .display{font-size:clamp(64px,19vw,110px)}}
+
+/* dark opening block: bonus message + the 30s ad */
+.vhero{background:var(--ink);color:#C4CAD4}
+.vhero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:center;padding-top:52px;padding-bottom:52px}
+.vhero .eyebrow{color:var(--blue-light);margin-bottom:14px}
+.vhero .display{font-size:clamp(46px,6.2vw,104px);line-height:.95;color:var(--white)}
+.blue-l{color:var(--blue-light)}
+.vhero-sub{font-size:19px;line-height:1.55;max-width:600px;margin:20px 0 0}
+.vhero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn-ghost{border-color:var(--paper);color:var(--paper)}
+.btn-ghost:hover{background:var(--paper);color:var(--ink)}
+.vhero .hero-video{border-color:var(--blue-light)}
+@media (max-width:900px){
+  .vhero .wrap{grid-template-columns:1fr;gap:28px}
+  .vhero .hero-video{max-width:320px}
+}
