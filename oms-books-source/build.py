@@ -9,6 +9,8 @@ SITE = 'https://omnimediasyndicatedbooks.com'
 EMAIL = 'submissions@omnimedia-books.com'
 PHONE = '(415) 918-6468'
 PHONE_TEL = '+14159186468'
+VIDEO_MP4 = 'https://d8j0ntlcm91z4.cloudfront.net/user_34zVcIhIsOTW0q6TlxKlFv5n3Up/hf_20260922_190824_48a4aa6c-8635-4126-8d19-e55cad300211.mp4'
+VIDEO_POSTER = 'https://d2ol7oe51mr4n9.cloudfront.net/user_34zVcIhIsOTW0q6TlxKlFv5n3Up/8254257b-bc02-4a9b-bbb4-49ea7233635e_resize.jpg'
 CHLOE_IMG = 'https://d8j0ntlcm91z4.cloudfront.net/user_34zVcIhIsOTW0q6TlxKlFv5n3Up/hf_20260922_150503_2fa3aa24-2bce-4b39-ae2c-f88e059211f2_min.webp'
 
 # ---------------------------------------------------------------- books
@@ -252,7 +254,13 @@ def home():
     cards = '\n'.join(book_card(b) for b in BOOKS)
     body = bonus_band() + f'''<section class="hero wrap" aria-labelledby="hero-h">
   <div class="meta-row"><span>Vol. 01</span><span>Paperback &middot; eBook &middot; Audiobook</span><span>Est. 2026</span></div>
-  <h1 class="display" id="hero-h">Your book.<br><span class="blue">Published.</span></h1>
+  <div class="hero-top">
+    <h1 class="display" id="hero-h">Your book.<br><span class="blue">Published.</span></h1>
+    <figure class="hero-video" style="margin:0">
+      <video src="{VIDEO_MP4}" poster="{VIDEO_POSTER}" autoplay muted loop playsinline controls preload="metadata" width="300" height="533" aria-label="OMS Books 30-second introduction"></video>
+      <figcaption class="cap"><span>Why traditional publishing is dead</span><span>0:30</span></figcaption>
+    </figure>
+  </div>
   <div class="hero-grid">
     <p class="lede">OMS Books signs authors at no cost and publishes their work in paperback, ebook, and audiobook.</p>
     <p>Our top sellers can go further. Select titles are developed into vertical films and pitched for the screen.</p>
